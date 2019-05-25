@@ -1,0 +1,25 @@
+@import "bootstrap";
+@import "font-awesome";
+thead, tfoot {
+  display: table-row-group;
+}
+
+table {
+  width:100%;
+  background-color:transparent;
+  border-collapse:collapse;
+  border-spacing:0;
+  margin-bottom:20px;
+
+  th,
+  td {
+    padding:4px 0;
+    text-align:left;
+    vertical-align:middle;
+    border-bottom:1px solid #ddd;
+  }
+
+  th {
+    font-weight: bold;
+  }
+}

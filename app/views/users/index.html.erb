@@ -1,0 +1,48 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Listing Users</h1>
+  <%= paginate @users, theme: 'twitter-bootstrap-4' %>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to user_path user do %>
+            <i class="fa fa-alipay"></i>
+          <% end %>
+            </td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+  <br>
+
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+
+  <%= link_to 'New User', new_user_path %><br>
+  <%= link_to export_users_path(format: :pdf)do %>
+     <i class="fa fa-paperclip" aria-hidden="true"></i> PDF Attachment
+<% end %><br>
+  <%= link_to download_users_path(format: :pdf) do %>
+    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Download as PDF
+  <% end %><br>
+  <%= link_to export_users_path(format: :xlsx)do %>
+     <i class="fa fa-file-excel-o" aria-hidden="true"></i> Download as Excel
+<% end %>
+</div>
