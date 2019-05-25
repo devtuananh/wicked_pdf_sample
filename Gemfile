@@ -40,7 +40,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "carrierwave"
 gem "fog-aws"
 gem "aws-sdk-s3", "~>1"
-
+gem 'toastr-rails'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 # Use ActiveModel has_secure_password

@@ -36,7 +36,7 @@ $(function () {
       },
       series: {
         enableMouseTracking: false,
-        shadow: false, 
+        shadow: false,
         animation: false
       }
     },

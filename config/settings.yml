@@ -1,0 +1,6 @@
+file:
+  extension:
+    image: "image/jpg image/jpeg image/png image/gif"
+    video: "video/mp4"
+    excel: "application/pdf"
+    pdf: "application/pdf"

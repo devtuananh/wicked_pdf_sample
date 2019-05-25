@@ -1,11 +1,12 @@
-
 <div class="container">
   <h1 align="center">List Users</h1>
+
   <table class='table table-bordered'>
     <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Create at</th>
     </tr>
     </thead>
 
@@ -14,11 +15,11 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= l user.created_at, format: :time %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 
   <div id="chartjs"></div>
-
 </div>

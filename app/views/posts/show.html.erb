@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Attach:</strong><br>
+  <% if @post.attach? && check_video_extension(@post.attach.file.content_type) %>
+    <%= video_tag @post.attach, controls: true, preload: 'none', size: "759x487" %>
+  <% elsif @post.attach? && check_image_extension(@post.attach.file.content_type) %>
+    <%= image_tag @post.attach.url, size: "500x500" %>
+  <% elsif @post.attach? && @post.attach.file.content_type == "application/pdf" %>
+    <iframe src="<%= @post.attach.file.url %>" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen></iframe>
+    <%= link_to "display using the full viewer", pdfjs.full_path(file: @post.attach) %>
+  <% elsif @post.attach? %>
+    <%= link_to @post.attach.file.filename, @post.attach.url %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

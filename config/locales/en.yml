@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  time:
+    formats:
+      own: "%H:%M:%S, %d-%m-%Y"
+      short: "%d/%m/%Y"
+      time: "%H:%M %d/%m/%Y"

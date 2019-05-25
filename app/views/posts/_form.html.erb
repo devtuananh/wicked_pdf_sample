@@ -1,0 +1,41 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :post_name, class:"form-control" %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :post_title, class:"form-control" %>
+  </div><br>
+
+  <div class="field">
+    <%= form.label :attach %><br>
+    <% if post.attach? %>
+      <% if check_image_extension(post.attach.file.content_type) %>
+        <%= image_tag post.attach.url %>
+      <% else %>
+        <%= link_to post.attach.file.filename, post.attach.url %>
+      <% end %><br>
+      <label>
+        <%= form.check_box :remove_attach %> Remove avatar
+      </label>
+    <% end %><br>
+    <%= form.file_field :attach, id: :post_attach %>
+  </div><br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

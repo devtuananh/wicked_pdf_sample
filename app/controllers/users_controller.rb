@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all.page(params[:page]).per(15)
+    @users = User.order(created_at: :desc).page(params[:page]).per(10)
     respond_to do |format|
       format.html
     end
@@ -11,19 +11,26 @@ class UsersController < ApplicationController
   # <%= wicked_pdf_image_tag 'rails.png' %>
 
   def export
-    @users = User.all
+    @users = User.order(created_at: :desc)
     respond_to do |format|
       format.xlsx
       format.pdf do
-        render  pdf: 'users', layout:'pdf.html', template: 'users/export', footer: { right: '[page]'  },
-            margin: { :top => 15, :bottom => 21, :left => 12, :right => 12 }, orientation: 'Landscape', page_size: 'A4'
+        render pdf: 'users', layout:'pdf.html', template: 'users/export', footer: { right: '[page]'  },
+               margin: { :top => 15, :bottom => 21, :left => 12, :right => 12 },
+               orientation: 'Landscape', page_size: 'A4'
       end
     end
   end
 
   def import
-    User.import_file params[:file]
-    redirect_to root_url, notice: "Data imported"
+    if params[:file].present?
+      User.import_file params[:file]
+      redirect_to root_url
+      flash[:success] =  "Data imported"
+    else
+      redirect_to root_url
+      flash[:error] =  "Data not imported"
+    end
   end
 
   def download
