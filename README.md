@@ -1,4 +1,4 @@
-###  Import/Export data
+### Import/Export data
 
 * Import data from xls, xlsx, csv
 
