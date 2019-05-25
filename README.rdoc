@@ -1,14 +1,19 @@
-== Import/export data
+###  Import/Export data
 
 * Import data from xls, xlsx, csv
+```ruby
 gem "roo" <br>
 gem "activerecord-import" <br>
-
+```
 * Export data to xls, xlsx, csv
+```ruby
 gem "rubyzip", "< 1.0.0" <br>
 gem "axlsx" <br>
 gem "axlsx_rails"
-
+```
 * Export data to pdf
-gem "wicked_pdf" <br>
+```ruby
+gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
+```
+
