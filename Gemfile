@@ -4,7 +4,7 @@ ruby "2.6.1"
 gem "rails", "~> 5.2.2"
 
 # Use Puma as the app server
-gem "puma", "~> 3.7"
+gem "puma", "~> 3.12"
 # Turbolinks makes navigating your web application faster
 gem "turbolinks", "~> 5"
 
